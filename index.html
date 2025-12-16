@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>การวิเคราะห์อาการยอดก้านธูปในทุเรียน - รายงานการวิจัยฉบับสมบูรณ์</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Added 'Prompt' font family -->
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;600;700;800&family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Sarabun', 'sans-serif'],
+                        prompt: ['Prompt', 'sans-serif'], // Added Prompt to config
+                    },
+                    colors: {
+                        durian: {
+                            100: '#FFFBE6',
+                            200: '#FFF1B8',
+                            300: '#FFE58F',
+                            400: '#FFD666',
+                            500: '#FAAD14',
+                            600: '#D48806',
+                            700: '#AD6800',
+                            800: '#874D00',
+                            900: '#613400',
+                        },
+                        leaf: {
+                            50: '#F6FFED',
+                            100: '#D9F7BE',
+                            200: '#B7EB8F',
+                            300: '#95DE64',
+                            400: '#73D13D',
+                            500: '#52C41A',
+                            600: '#389E0D',
+                            700: '#237804',
+                            800: '#135200',
+                            900: '#092B00',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .durian-gradient {
+            background: linear-gradient(135deg, #135200 0%, #389E0D 50%, #D48806 100%);
+        }
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .text-stroke-white {
+            -webkit-text-stroke: 5px white;
+            paint-order: stroke fill;
+        }
+        @media (min-width: 768px) {
+            .text-stroke-white {
+                -webkit-text-stroke: 9px white;
+            }
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .section-header::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: #FAAD14;
+            margin-top: 10px;
+            border-radius: 2px;
+        }
+        /* Hide scrollbar for image slider */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans leading-relaxed pt-20">
+
+    <!-- Navbar -->
+    <nav class="bg-white/95 backdrop-blur-md fixed top-0 left-0 w-full z-50 shadow-sm border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <!-- Logo Image (Larger, No Background) -->
+                <div class="w-16 h-16 flex items-center justify-center">
+                    <img src="https://i.postimg.cc/FR0vwZg8/logo-thippruk-stork-white-01.png" alt="Thippruk Logo" class="w-full h-full object-contain filter drop-shadow-sm bg-white rounded-lg p-1">
+                </div>
+                <!-- Updated Brand Name (Reduced to ~70%) -->
+                <span class="font-bold text-green-800 text-lg md:text-xl tracking-tight">
+                    สวนทุเรียนคุณภาพ "สูตรปุ๋ย อ.ภพ"
+                </span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
+        <!-- Background Image & Gradient Overlay -->
+        <div class="absolute inset-0 -z-10">
+            <img src="https://i.postimg.cc/tJmJPqxn/IMG_20251126_145709.jpg" alt="Background" class="w-full h-full object-cover object-center">
+            <div class="absolute inset-0 bg-gradient-to-b from-leaf-900/80 to-durian-900/80 mix-blend-multiply"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 text-center text-white z-10">
+            <!-- Added Pop up Image -->
+            <img src="https://i.postimg.cc/5t6FDQkx/IMG-20251126-145857-copy.png" alt="Feature Graphic" class="mx-auto mb-4 w-auto h-32 md:h-48 lg:h-64 object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-300">
+
+            <!-- Updated Title Structure with Prompt Font -->
+            <h1 class="font-prompt font-bold mb-10 flex flex-col items-center gap-4 md:gap-6">
+                <!-- Line 1 -->
+                <span class="text-2xl md:text-4xl text-white drop-shadow-lg tracking-wide">
+                    สาเหตุและแนวทางการจัดการอาการ
+                </span>
+                
+                <!-- Line 2 (Highlighted) -->
+                <span class="text-5xl md:text-8xl text-red-600 font-extrabold text-stroke-white tracking-wider drop-shadow-2xl py-2">
+                    "ยอดก้านธูป"
+                </span>
+                
+                <!-- Line 3 -->
+                <span class="text-2xl md:text-4xl text-white drop-shadow-lg tracking-wide">
+                    ในทุเรียน
+                </span>
+            </h1>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#solution" class="px-8 py-3 bg-durian-500 text-white rounded-full font-semibold hover:bg-durian-600 transition shadow-lg">
+                    ดูแนวทางแก้ไข
+                </a>
+            </div>
+        </div>
+        
+    </header>
+
+    <!-- Content Wrapper -->
+    <main class="container mx-auto px-4 py-12 max-w-5xl">
+        
+        <!-- Intro -->
+        <section id="intro" class="mb-20">
+            <div class="flex flex-col md:flex-row gap-10 items-start">
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl font-bold text-leaf-900 mb-6 section-header">ปัญหาที่พบ</h2>
+                    <p class="text-gray-600 mb-4">
+                        ในอุตสาหกรรมการผลิตทุเรียน ความสมบูรณ์ของระบบยอดและใบ (Vegetative Flush) คือหัวใจสำคัญ แต่ปัจจุบันชาวสวนทั่วไทยกำลังเผชิญกับวิกฤต <strong>"ยอดก้านธูป"</strong>
+                    </p>
+                    <p class="text-gray-600">
+                        อาการนี้คือการหลุดร่วงของใบอ่อนจนเหลือแต่กิ่งที่แห้งตายตั้งตรงคล้ายธูป รายงานฉบับนี้มุ่งเน้นการวิเคราะห์แยกแยะระหว่าง <strong>ปัจจัยทางชีวภาพ (โรค/แมลง)</strong> และ <strong>ปัจจัยทางกายภาพ (ขาดธาตุอาหาร)</strong> เพื่อหาทางออกที่ยั่งยืน
+                    </p>
+                </div>
+                <div class="md:w-1/2 bg-white p-6 rounded-2xl shadow-xl border-l-4 border-durian-500">
+                    <h3 class="text-xl font-bold text-durian-700 mb-3">สมมติฐานหลัก (Predisposition-Trigger Framework)</h3>
+                    <p class="text-gray-600 italic">
+                        "ต้นทุเรียนอาจมีความอ่อนแอทางสรีรวิทยาจากการขาดธาตุอาหารสะสมมาก่อน และถูกซ้ำเติมด้วยการเข้าทำลายของศัตรูพืชจนแสดงอาการวิกฤต"
+                    </p>
+                    <div class="mt-4 flex gap-4">
+                        <div class="flex items-center gap-2 text-sm text-leaf-700">
+                            <i class="fa-solid fa-droplet-slash"></i> ภัยแล้ง
+                        </div>
+                        <div class="flex items-center gap-2 text-sm text-red-600">
+                            <i class="fa-solid fa-bug"></i> แมลงศัตรูพืช
+                        </div>
+                        <div class="flex items-center gap-2 text-sm text-durian-600">
+                            <i class="fa-solid fa-seedling"></i> ขาดโบรอน
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- New Analysis Section -->
+        <section class="mb-20">
+            <div class="bg-gradient-to-br from-white to-durian-50 rounded-3xl p-8 md:p-12 shadow-xl border border-durian-200 relative overflow-hidden">
+                <!-- Decorative bg -->
+                <div class="absolute top-0 right-0 w-64 h-64 bg-durian-200 rounded-full mix-blend-multiply filter blur-3xl opacity-50 -mr-16 -mt-16"></div>
+                
+                <h2 class="text-2xl md:text-3xl font-bold text-durian-800 mb-6 relative z-10 font-prompt">
+                    <i class="fa-solid fa-magnifying-glass-chart mr-3"></i>“ยอดก้านธูปแห้ง” เกิดจากโรคหรือขาดธาตุ?
+                </h2>
+                
+                <div class="prose prose-lg text-gray-700 relative z-10 max-w-none">
+                    <p class="font-semibold text-xl text-red-600 mb-4">
+                        อาการยอดก้านธูปแห้งที่ระบาดหนักในช่วง 3–4 ปีนี้ ส่วนใหญ่ไม่ได้เกิดจากเพลี้ยจักจั่นฝอยหรือเชื้อราเหมือนในอดีต แต่เกิดจากการ "ขาดโบรอน (B) อย่างเฉียบพลัน"
+                    </p>
+                    <p class="mb-6 leading-relaxed">
+                        ซึ่งมักเกิดขึ้นในช่วงสภาพอากาศร้อนจัด อบอ้าว ลมแรง ความชื้นสัมพัทธ์ต่ำ รวมถึงช่วงงดน้ำทำดอกและหลังเก็บเกี่ยวที่ต้นทุเรียนสูญเสีย <strong>แคลเซียม (Ca) - โบรอน (B)</strong> ไปมาก ทำให้ระบบรากลำเลียงโบรอนขึ้นยอดได้ลดลงทันที
+                    </p>
+                    
+                    <div class="bg-white/80 backdrop-blur rounded-xl p-6 border-l-4 border-durian-500 mb-6 shadow-sm">
+                        <h4 class="font-bold text-gray-800 mb-3 text-lg"><i class="fa-solid fa-triangle-exclamation text-durian-500 mr-2"></i>ลักษณะอาการที่สำคัญ:</h4>
+                        <ul class="list-none space-y-2">
+                            <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-2"></i> <span>ปลายยอดสั้น ใบอ่อนเล็ก แคบ</span></li>
+                            <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-2"></i> <span>แตกยอดข้างยิบ ๆ (Witches' broom) กิ่งเปราะ</span></li>
+                            <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-2"></i> <span>ระยะสุดท้าย ปลายยอดแห้งตายจนเกิดลักษณะ “ก้านธูป”</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-red-50 p-4 rounded-lg text-red-800 font-medium text-center border border-red-100">
+                        <i class="fa-solid fa-xmark mr-2"></i>ไม่ใช่การพึ่งยาฆ่าเพลี้ยหรือยาฆ่าเชื้อเพียงอย่างเดียว เพราะปัญหาที่แท้จริงคือ ความไม่สมดุลของธาตุอาหาร
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Part 1: Climate Context -->
+        <section class="mb-20">
+            <div class="bg-leaf-50 rounded-3xl p-8 md:p-12 relative overflow-hidden">
+                <div class="relative z-10">
+                    <h2 class="text-2xl md:text-3xl font-bold text-leaf-900 mb-8 section-header">พลวัตของการระบาดและสภาพภูมิอากาศ</h2>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="bg-white p-6 rounded-xl shadow-sm">
+                            <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center text-red-600 mb-4">
+                                <i class="fa-solid fa-temperature-arrow-up text-xl"></i>
+                            </div>
+                            <h3 class="font-bold text-lg mb-2">แล้งจัดสลับฝนทิ้งช่วง</h3>
+                            <p class="text-sm text-gray-600">
+                                ทำให้เกิด Water Stress พืชชะงักการดูดซึมธาตุอาหาร โดยเฉพาะ "โบรอน" ที่เคลื่อนย้ายได้ยากเมื่อขาดน้ำ
+                            </p>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl shadow-sm">
+                            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 mb-4">
+                                <i class="fa-solid fa-cloud-showers-heavy text-xl"></i>
+                            </div>
+                            <h3 class="font-bold text-lg mb-2">ความชื้นสัมพัทธ์สูงสลับร้อน</h3>
+                            <p class="text-sm text-gray-600">
+                                เอื้อต่อการระบาดของ "เพลี้ยจักจั่นฝอย" (Amrasca durianae) ซึ่งวงจรชีวิตสั้นและดื้อยา
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Part 2: Physiology -->
+        <section class="mb-20">
+            <h2 class="text-3xl font-bold text-leaf-900 mb-8 section-header">บทบาทของโบรอนและแคลเซียม</h2>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <div class="bg-white border border-gray-100 p-6 rounded-xl shadow hover:shadow-lg transition">
+                    <h3 class="text-xl font-bold text-durian-600 mb-3">กลไกของโบรอน</h3>
+                    <p class="text-gray-600 text-sm">
+                        โบรอนทำหน้าที่เหมือน "ปูนซีเมนต์" เชื่อมโครงสร้างผนังเซลล์ (Pectin RG-II) หากขาดโบรอน ผนังเซลล์จะเปราะบางและยุบตัว
+                    </p>
+                </div>
+                <!-- Card 2 -->
+                <div class="bg-white border border-gray-100 p-6 rounded-xl shadow hover:shadow-lg transition">
+                    <h3 class="text-xl font-bold text-red-600 mb-3">ภาวะขาดเฉียบพลัน</h3>
+                    <p class="text-gray-600 text-sm">
+                        โบรอนไม่เคลื่อนย้ายจากใบแก่มาช่วยยอดอ่อน (Phloem-immobile) เมื่อรากขาดน้ำ การส่งโบรอนไปยอดจะหยุดชะงัก ทำให้เกิดอาการ Dieback คล้ายยอดก้านธูป
+                    </p>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-white border border-gray-100 p-6 rounded-xl shadow hover:shadow-lg transition">
+                    <h3 class="text-xl font-bold text-green-600 mb-3">Ca-B Synergy</h3>
+                    <p class="text-gray-600 text-sm">
+                        แคลเซียมและโบรอนต้องทำงานร่วมกัน หากขาดจะเกิดรอยร้าวระดับจุลภาค (Micro-cracks) ซึ่งปล่อยสารดึงดูดแมลงศัตรูพืช
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Part 3: Biotic Factors (The Bug) -->
+        <section class="mb-20">
+            <h2 class="text-3xl font-bold text-leaf-900 mb-6 section-header">เพลี้ยจักจั่นฝอย ตัวการสำคัญ</h2>
+            
+            <div class="bg-red-50 p-8 rounded-2xl mb-10 border border-red-100">
+                <div class="flex items-start gap-4">
+                    <div class="text-4xl text-red-500"><i class="fa-solid fa-locust"></i></div>
+                    <div>
+                        <h3 class="text-xl font-bold text-red-800 mb-2">พิษในน้ำลาย (Phytotoxic Saliva)</h3>
+                        <p class="text-gray-700">
+                            เพลี้ยไม่ได้แค่ดูดน้ำเลี้ยง แต่ปล่อยสารพิษที่ทำให้เกิดอาการ <strong>"Hopper Burn"</strong> ใบจะเหลืองซีด ม้วนงอขึ้นเหมือนถ้วย และแห้งกรอบ ทุเรียนจะสลัดใบเพื่อลดความเสียหาย จนเหลือแต่ก้านธูป
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- New Image Slider Section -->
+        <section class="mb-20">
+            
+            <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 no-scrollbar">
+                <!-- Old Images -->
+                <div class="snap-center shrink-0 w-4/5 md:w-2/5 relative group">
+                    <img src="https://i.postimg.cc/tJmJPqxn/IMG-20251126-145709.jpg" alt="ภาพประกอบที่ 1" class="rounded-xl shadow-lg w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105">
+                </div>
+                <div class="snap-center shrink-0 w-4/5 md:w-2/5 relative group">
+                    <img src="https://i.postimg.cc/VvN5drdX/IMG-20251126-145727.jpg" alt="ภาพประกอบที่ 2" class="rounded-xl shadow-lg w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105">
+                </div>
+                <div class="snap-center shrink-0 w-4/5 md:w-2/5 relative group">
+                    <img src="https://i.postimg.cc/HnPn5Yyy/IMG-20251126-145839.jpg" alt="ภาพประกอบที่ 3" class="rounded-xl shadow-lg w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105">
+                </div>
+                <div class="snap-center shrink-0 w-4/5 md:w-2/5 relative group">
+                    <img src="https://i.postimg.cc/brFrbytT/IMG-20251126-145857.jpg" alt="ภาพประกอบที่ 4" class="rounded-xl shadow-lg w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105">
+                </div>
+                <div class="snap-center shrink-0 w-4/5 md:w-2/5 relative group">
+                    <img src="https://i.postimg.cc/5ykyv4CY/IMG-20251126-145944-2.jpg" alt="ภาพประกอบที่ 5" class="rounded-xl shadow-lg w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105">
+                </div>
+                <div class="snap-center shrink-0 w-4/5 md:w-2/5 relative group">
+                    <img src="https://i.postimg.cc/MHrHR6Q4/IMG-20251126-145957.jpg" alt="ภาพประกอบที่ 6" class="rounded-xl shadow-lg w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105">
+                </div>
+                <div class="snap-center shrink-0 w-4/5 md:w-2/5 relative group">
+                    <img src="https://i.postimg.cc/hv3vxDdY/IMG-20251126-150009.jpg" alt="ภาพประกอบที่ 7" class="rounded-xl shadow-lg w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105">
+                </div>
+                
+                <!-- New Added Images -->
+                <div class="snap-center shrink-0 w-4/5 md:w-2/5 relative group">
+                    <img src="https://i.postimg.cc/nhXt9qRt/Durian-leafhopper-01-06-640w-gigapixel-recover-v2-2x-copy.webp" alt="เพลี้ยจักจั่นฝอย 1" class="rounded-xl shadow-lg w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105">
+                </div>
+                <div class="snap-center shrink-0 w-4/5 md:w-2/5 relative group">
+                    <img src="https://i.postimg.cc/RZWzJwsx/Durian-leafhopper-01-07-640w-gigapixel-recover-v2-2x-copy.webp" alt="เพลี้ยจักจั่นฝอย 2" class="rounded-xl shadow-lg w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105">
+                </div>
+                <div class="snap-center shrink-0 w-4/5 md:w-2/5 relative group">
+                    <img src="https://i.postimg.cc/zGy1HTtZ/webpic-100x150-phel-yc-kc-n-01-gigapixel-recover-v2-2x-copy.webp" alt="เพลี้ยจักจั่นฝอย 3" class="rounded-xl shadow-lg w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105">
+                </div>
+            </div>
+            <p class="text-center text-gray-500 text-sm mt-2"><i class="fa-solid fa-arrows-left-right mr-2"></i>เลื่อนเพื่อดูภาพเพิ่มเติม</p>
+        </section>
+
+        <!-- Updated Solution Section with Product Formulas -->
+        <section id="solution" class="mb-20">
+            <h2 class="text-3xl font-bold text-leaf-900 mb-8 section-header font-prompt">สูตรเด็ดแก้ปัญหา "ยอดก้านธูป" (ตามคำแนะนำล่าสุด)</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Foliar Formula -->
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 flex flex-col transform hover:-translate-y-1 transition duration-300">
+                    <div class="bg-green-600 text-white p-5 text-center">
+                        <h3 class="text-xl font-bold font-prompt"><i class="fa-solid fa-spray-can-sparkles mr-2"></i>ทางใบ: เสริมแคลเซียม-โบรอน</h3>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col items-center">
+                        <img src="https://i.postimg.cc/G2v9Dsvt/ค_เลตแคล_บ_02_copy.webp" alt="คีเลตแคลบี" class="h-56 object-contain mb-6 hover:scale-105 transition duration-300">
+                        <div class="text-center w-full">
+                            <p class="font-bold text-gray-800 text-lg mb-3">เสริมโบรอนเดี่ยว + แคลเซียม</p>
+                            <div class="bg-green-50 p-5 rounded-xl border border-green-200 mb-4 text-left">
+                                <ul class="space-y-3">
+                                    <li class="flex items-center gap-3">
+                                        <span class="w-8 h-8 rounded-full bg-green-200 text-green-700 flex items-center justify-center font-bold flex-shrink-0">1</span>
+                                        <span class="text-gray-700"><strong>คีเลตแคลบี:</strong> 400 ซีซี / น้ำ 200 ลิตร</span>
+                                    </li>
+                                    <li class="flex items-center gap-3">
+                                        <span class="w-8 h-8 rounded-full bg-green-200 text-green-700 flex items-center justify-center font-bold flex-shrink-0">2</span>
+                                        <span class="text-gray-700"><strong>กรดบอริก 17%:</strong> 30-50 กรัม / น้ำ 200 ลิตร</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="inline-block bg-red-100 text-red-700 px-4 py-2 rounded-full font-semibold text-sm">
+                                <i class="fa-solid fa-clock mr-1"></i> ฉีดพ่นทุก 5-7 วัน ต่อเนื่องจนอาการลดลง
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Soil Formula -->
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 flex flex-col transform hover:-translate-y-1 transition duration-300">
+                    <div class="bg-amber-700 text-white p-5 text-center">
+                        <h3 class="text-xl font-bold font-prompt"><i class="fa-solid fa-roots mr-2"></i>ทางดิน: ฟื้นฟูระบบราก</h3>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col items-center">
+                        <div class="flex gap-2 justify-center mb-6 h-56 items-center">
+                            <img src="https://i.postimg.cc/TwwMVm0B/S-FORCX100-04-copy.png" alt="Sforcx100" class="h-32 md:h-40 object-contain hover:scale-110 transition duration-300 z-10">
+                            <img src="https://i.postimg.cc/zvcmXx32/เฮอร_เคน02_copy.webp" alt="Hurricane" class="h-36 md:h-48 object-contain hover:scale-110 transition duration-300 z-20 -mx-4">
+                            <img src="https://i.postimg.cc/RFwqtnwy/ซ_งค_เทอร_โบ.webp" alt="Zinc Turbo" class="h-32 md:h-40 object-contain hover:scale-110 transition duration-300 z-10">
+                        </div>
+                        <div class="text-center w-full">
+                            <p class="font-bold text-gray-800 text-lg mb-3">กระตุ้นการแตกรากใหม่</p>
+                            <div class="bg-amber-50 p-5 rounded-xl border border-amber-200 mb-4 text-left">
+                                <ul class="space-y-3">
+                                    <li class="flex items-center gap-3">
+                                        <span class="w-8 h-8 rounded-full bg-amber-200 text-amber-800 flex items-center justify-center font-bold flex-shrink-0">1</span>
+                                        <span class="text-gray-700"><strong>ฮิวมิคฟูวิค Sforcx100:</strong> 2 ขีด / ไร่</span>
+                                    </li>
+                                    <li class="flex items-center gap-3">
+                                        <span class="w-8 h-8 rounded-full bg-amber-200 text-amber-800 flex items-center justify-center font-bold flex-shrink-0">2</span>
+                                        <span class="text-gray-700"><strong>กรดอะมิโนเฮอริเคน:</strong> 200 ซีซี / น้ำ 200 ลิตร</span>
+                                    </li>
+                                    <li class="flex items-center gap-3">
+                                        <span class="w-8 h-8 rounded-full bg-amber-200 text-amber-800 flex items-center justify-center font-bold flex-shrink-0">3</span>
+                                        <span class="text-gray-700"><strong>ซิ้งค์เทอโบ:</strong> 100 ซีซี / น้ำ 200 ลิตร</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="inline-block bg-amber-100 text-amber-800 px-4 py-2 rounded-full font-semibold text-sm">
+                                <i class="fa-solid fa-shower mr-1"></i> พ่นทางดินรอบทรงพุ่มเพื่อกระตุ้นราก
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-8 text-center">
+                 <p class="text-gray-500 text-sm">ควรปรับใช้ตามสภาพความรุนแรงของอาการในแต่ละพื้นที่</p>
+            </div>
+        </section>
+
+        <!-- Conclusion -->
+        <section class="mb-12 text-center bg-leaf-50 p-10 rounded-3xl">
+            <h2 class="text-2xl font-bold text-leaf-900 mb-4">บทสรุป</h2>
+            <p class="text-gray-700 max-w-3xl mx-auto leading-relaxed">
+                อาการ "ยอดก้านธูป" เกิดจากภาวะซ้อนทับของ <strong>ความอ่อนแอจากสภาพอากาศ (ขาด Ca-B)</strong> และ <strong>การระบาดของเพลี้ยจักจั่นฝอย</strong> เกษตรกรต้องยึดหลัก "ป้องกันแมลง-เสริมแกร่งด้วยธาตุอาหาร-ฟื้นฟูราก" ไปพร้อมกันจึงจะชนะวิกฤตนี้ได้อย่างยั่งยืน
+            </p>
+        </section>
+
+        <!-- References Toggle -->
+        <details class="mb-20 text-sm text-gray-500 max-w-2xl mx-auto">
+            <summary class="cursor-pointer hover:text-leaf-600 text-center mb-4">ดูเอกสารอ้างอิง</summary>
+            <ul class="list-decimal pl-5 space-y-1 bg-white p-6 rounded-lg shadow-inner">
+                <li>อาการขาดโบรอน-ทุเรียน | ยารา ประเทศไทย</li>
+                <li>เพลี้ยจักจั่นฝอยทุเรียน ระบาดหนัก - เอราวัณเคมี</li>
+                <li>Boron Deficiency Symptoms in Durian | U.S. Borax</li>
+                <li>ปัญหาใบทุเรียนผิดปกติ - GreenCal</li>
+                <li>การจัดการศัตรูพืชแบบบูรณาการ - กรมส่งเสริมการเกษตร</li>
+                <!-- เพิ่มเติมตามข้อมูลที่ให้มา -->
+            </ul>
+        </details>
+
+        <!-- Research Report Link -->
+        <div class="text-center mb-20 -mt-10">
+            <a href="https://docs.google.com/document/d/1Us3IWkQfXtGDuJALeyjq-I2uVeN_1YbgL-Hs42MrASg/edit?usp=sharing" target="_blank" class="inline-flex items-center gap-2 px-6 py-3 bg-white border border-durian-300 rounded-xl shadow-sm hover:shadow-md hover:border-durian-500 hover:text-durian-700 text-gray-700 transition duration-300">
+                <i class="fa-brands fa-google-drive text-durian-500 text-xl"></i>
+                <span class="font-semibold">รายงานการวิจัย: การวิเคราะห์สาเหตุและแนวทางการจัดการอาการ "ยอดก้านธูป"</span>
+            </a>
+        </div>
+
+    </main>
+
+    <!-- New Bottom Contact Section -->
+    <section class="py-10 bg-white border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-4">
+            <!-- 1. Image Banner (Primary View) - Requires 'contact2.webp' in folder -->
+            <!-- The 'onerror' will hide this image and show the responsive fallback if file is missing -->
+            <img
+                src="contact2.webp"
+                alt="Contact Channels AG-ZIENCE"
+                class="w-full h-auto rounded-xl shadow-sm object-contain mx-auto"
+                onerror="this.style.display='none'; document.getElementById('contact-fallback').classList.remove('hidden');"
+            >
+
+            <!-- 2. Responsive Fallback (Shows if image is broken OR can be enabled for mobile) -->
+            <!-- Initially hidden by 'hidden' class, shown by onerror script above -->
+            <div id="contact-fallback" class="hidden">
+                <div class="flex flex-col lg:flex-row items-center justify-between gap-8 p-6 bg-gray-50 rounded-2xl border border-gray-200">
+                    
+                    <!-- Left: Logos -->
+                    <div class="flex flex-col sm:flex-row items-center gap-6 text-center sm:text-left">
+                        <!-- AG-ZIENCE Image Logo (Replaces Text) -->
+                        <div class="w-48 h-auto flex-shrink-0">
+                            <img src="https://i.postimg.cc/Jh8b2SdJ/logo-ag-zience-02.png" alt="AG-ZIENCE Logo" class="w-full h-full object-contain">
+                        </div>
+                        <!-- Thippruk Logo -->
+                        <div class="w-20 h-20 bg-white rounded-lg p-2 shadow-sm border border-gray-100 flex-shrink-0">
+                            <img src="https://i.postimg.cc/FR0vwZg8/logo-thippruk-stork-white-01.png" alt="Thippruk" class="w-full h-full object-contain">
+                        </div>
+                    </div>
+
+                    <!-- Middle: Social Links (Updated with Links & Line OpenChat) -->
+                    <div class="flex flex-col gap-3 w-full max-w-lg">
+                        <!-- Facebook -->
+                        <a href="https://www.facebook.com/groups/159157714503728/" target="_blank" class="flex items-center gap-3 bg-white p-2 rounded-lg shadow-sm hover:bg-blue-50 transition-colors border border-gray-100 group">
+                            <i class="fa-brands fa-facebook text-blue-600 text-3xl w-8 text-center group-hover:scale-110 transition-transform"></i>
+                            <span class="font-medium text-gray-700 group-hover:text-blue-700">ใส่ปุ๋ยให้ถูกพืชก็งาม by อ.ภพ</span>
+                        </a>
+                        <!-- Line OpenChat -->
+                        <a href="https://line.me/ti/g2/I7FoCIyNFx5P3g3duDjoq9AYF4OYvE6ZERNBfQ?utm_source=invitation&utm_medium=QR_code&utm_campaign=default" target="_blank" class="flex items-center gap-3 bg-white p-2 rounded-lg shadow-sm hover:bg-green-50 transition-colors border border-gray-100 group">
+                            <i class="fa-brands fa-line text-green-500 text-3xl w-8 text-center group-hover:scale-110 transition-transform"></i>
+                            <div class="flex flex-col">
+                                <span class="font-medium text-gray-700 group-hover:text-green-700">ปุ๋ยอ.ภพ #ทุเรียนคุณภาพ</span>
+                                <span class="text-xs text-green-600 bg-green-100 px-2 py-0.5 rounded-full w-fit">OpenChat</span>
+                            </div>
+                        </a>
+                        <!-- TikTok -->
+                        <a href="https://vt.tiktok.com/ZSAUQpRvp/" target="_blank" class="flex items-center gap-3 bg-white p-2 rounded-lg shadow-sm hover:bg-gray-50 transition-colors border border-gray-100 group">
+                            <i class="fa-brands fa-tiktok text-black text-3xl w-8 text-center group-hover:scale-110 transition-transform"></i>
+                            <span class="font-medium text-gray-700 group-hover:text-black">metalpob</span>
+                        </a>
+                        <!-- YouTube -->
+                        <a href="https://www.youtube.com/@ajarnpobsak1613" target="_blank" class="flex items-center gap-3 bg-white p-2 rounded-lg shadow-sm hover:bg-red-50 transition-colors border border-gray-100 group">
+                            <i class="fa-brands fa-youtube text-red-600 text-3xl w-8 text-center group-hover:scale-110 transition-transform"></i>
+                            <span class="font-medium text-gray-700 group-hover:text-red-700">Ajarn Pobsak</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-8">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <div class="flex justify-center gap-2 mb-4 flex-wrap">
+                <span class="text-green-500">#ปุ๋ยอาจารย์ภพ</span>
+                <span class="text-white">#agz</span>
+                <span class="text-green-500">#สาระดีๆ</span>
+                <span class="text-white">#ใส่ปุ๋ยให้ถูกพืชก็งาม</span>
+            </div>
+            <p class="text-sm">© 2024 สาระดีๆ จากปุ๋ยอ.ภพ เพื่อพี่น้องชาวสวนทุเรียน</p>
+        </div>
+    </footer>
+
+</body>
+</html>
